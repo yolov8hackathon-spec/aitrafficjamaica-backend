@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.*
+*.pt
+*.pth
+*.onnx
+node_modules/
+.DS_Store
+*:Zone.Identifier

@@ -1,0 +1,26 @@
+# BoTSORT config tuned for fixed traffic cameras (whitelinez)
+# Static camera — no need for aggressive global motion compensation.
+# Vehicles move predictably; optimise for ID stability over occlusions.
+
+tracker_type: botsort
+
+# Detection confidence thresholds for track init/update
+track_high_thresh: 0.35     # match YOLO_CONF — accept all detections YOLO passes
+track_low_thresh: 0.10      # still consider low-conf boxes for association
+new_track_thresh: 0.42      # minimum conf to start a new track (raised slightly to reduce ghost tracks)
+
+# ID stability
+track_buffer: 55            # frames to keep a lost track alive (~3.7s at 15fps; covers red-light stops)
+match_thresh: 0.75          # IoU match threshold — relaxed for partial occlusions
+
+# Score fusion: multiply IoU by detection confidence for assignment
+fuse_score: true
+
+# Global motion compensation — sparseOptFlow works well for static cams
+# (compensates for minor stream encoding jitter)
+gmc_method: sparseOptFlow
+
+# Re-ID (appearance matching) — disabled; no GPU for feature extraction
+with_reid: false
+proximity_thresh: 0.5
+appearance_thresh: 0.25

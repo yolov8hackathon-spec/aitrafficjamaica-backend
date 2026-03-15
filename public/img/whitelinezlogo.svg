@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 38" height="34" fill="none" role="img" aria-label="WHITELINEZ">
+
+  <!-- YOLO-style bounding box corner brackets (yellow) -->
+  <path d="M7,2 L2,2 L2,9"   stroke="#FFD600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M51,2 L58,2 L58,9" stroke="#FFD600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2,29 L2,36 L9,36"  stroke="#FFD600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M51,36 L58,36 L58,29" stroke="#FFD600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- CAR confidence label (top-left corner of detection box) -->
+  <rect x="2" y="2" width="18" height="8.5" rx="1.5" fill="#FFD600"/>
+  <text x="5" y="9" font-family="Arial,Helvetica,sans-serif" font-size="6.5" font-weight="700" fill="#111" letter-spacing="0.3">CAR</text>
+
+  <!-- Wheels (draw before body so body occludes top of wheels naturally) -->
+  <circle cx="15" cy="31" r="5"   fill="#333" stroke="#666" stroke-width="0.8"/>
+  <circle cx="15" cy="31" r="1.9" fill="#666"/>
+  <circle cx="41" cy="31" r="5"   fill="#333" stroke="#666" stroke-width="0.8"/>
+  <circle cx="41" cy="31" r="1.9" fill="#666"/>
+
+  <!-- Car body (main rectangle) -->
+  <rect x="7" y="22" width="46" height="9" rx="2" fill="#cccccc"/>
+
+  <!-- Cabin / roof (trapezoid silhouette) -->
+  <polygon points="16,13 36,13 44,22 8,22" fill="#cccccc"/>
+
+  <!-- Windows (blue-tinted glass) -->
+  <polygon points="17,14.5 23,14.5 23,21.2 10.5,21.2" fill="#4a6888" opacity="0.8"/>
+  <polygon points="24,14.5 31.5,14.5 32.5,21.2 24,21.2"  fill="#4a6888" opacity="0.8"/>
+  <polygon points="32.5,14.5 35.5,14.5 41.5,21.2 33.5,21.2" fill="#4a6888" opacity="0.8"/>
+
+  <!-- Headlight (front = right side) -->
+  <rect x="51.5" y="24" width="2.5" height="3.5" rx="0.8" fill="#ffe066" opacity="0.95"/>
+
+  <!-- Taillight (rear = left side) -->
+  <rect x="6"    y="24" width="2.5" height="3.5" rx="0.8" fill="#ff5555" opacity="0.9"/>
+
+  <!-- Door seam line -->
+  <line x1="28" y1="22" x2="28" y2="30.5" stroke="#aaa" stroke-width="0.6" opacity="0.7"/>
+
+  <!-- WHITELINEZ wordmark -->
+  <text x="66" y="26"
+        font-family="'Arial Black','Franklin Gothic Heavy',Impact,Arial,sans-serif"
+        font-size="15.5"
+        font-weight="900"
+        fill="#ffffff"
+        letter-spacing="1.5">WHITELINEZ</text>
+
+</svg>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account - WHITELINEZ</title>
+  <link rel="icon" type="image/png" href="/img/gfdaw-removebg-preview.png" />
+  <link rel="shortcut icon" href="/img/gfdaw-removebg-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/vercel-analytics-init.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="dark account-page">
+
+  <header class="site-header">
+    <a href="/index.html" class="logo"><img src="/img/gfdaw-removebg-preview.png" alt="AI TRAFFIC JAMAICA" /><span class="logo-title">AI TRAFFIC JAMAICA</span></a>
+    <nav>
+      <a id="account-nav-admin" href="/admin.html" class="hidden">Admin</a>
+      <a href="/index.html">Live</a>
+      <a href="/account.html" class="active">Account</a>
+      <span class="nav-icon-btn nav-avatar-btn" title="Profile">
+        <img id="account-header-avatar" class="nav-avatar" alt="Profile" />
+      </span>
+      <button id="btn-logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="account-main">
+
+    <section class="account-profile-card">
+      <div class="profile-avatar-wrap">
+        <img id="profile-avatar-img" class="profile-avatar" alt="Profile avatar" />
+        <label for="profile-avatar-input" class="btn-secondary profile-avatar-btn">Upload</label>
+        <input id="profile-avatar-input" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" class="hidden" />
+      </div>
+      <div class="profile-fields">
+        <div class="field" style="margin-bottom:10px;">
+          <label for="profile-username">Username</label>
+          <input id="profile-username" type="text" maxlength="32" placeholder="Your username" />
+        </div>
+        <div class="profile-actions">
+          <button id="btn-save-profile" class="btn-primary">Save Profile</button>
+          <span id="profile-msg" class="muted"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-balance-card">
+      <div class="balance-label">Virtual Balance</div>
+      <div id="balance-display" class="balance-value">-</div>
+      <div class="balance-currency">credits</div>
+      <div id="account-ws-status" class="ws-status ws-err">Connecting...</div>
+    </section>
+
+    <section class="account-history">
+      <h2>Pending Bets</h2>
+      <div id="pending-container">
+        <p class="loading">Loading pending bets...</p>
+      </div>
+    </section>
+
+    <section class="account-history">
+      <h2>Bet History</h2>
+      <div id="history-container">
+        <p class="loading">Loading...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/supabase-init.js"></script>
+  <script src="/js/site-views.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/account-init.js"></script>
+</body>
+</html>
+

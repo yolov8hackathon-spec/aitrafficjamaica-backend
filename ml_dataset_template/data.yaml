@@ -1,0 +1,6 @@
+path: .
+train: images/train
+val: images/val
+names:
+  0: car
+download: https://zaxycvrbdzkptjzrcxel.supabase.co/storage/v1/object/public/ml-datasets/datasets/whitelinez/whitelinez-yolo.zip

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — WHITELINEZ</title>
+  <link rel="icon" type="image/png" href="/img/gfdaw-removebg-preview.png" />
+  <link rel="shortcut icon" href="/img/gfdaw-removebg-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script src="/js/vercel-analytics-init.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="dark auth-page">
+
+  <div class="auth-card">
+    <a href="/index.html" class="logo"><img src="/img/gfdaw-removebg-preview.png" alt="AI TRAFFIC JAMAICA" /><span class="logo-title">AI TRAFFIC JAMAICA</span></a>
+    <h1>Create Account</h1>
+
+    <form id="reg-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="new-password"
+               minlength="8" required />
+        <small class="hint">Minimum 8 characters</small>
+      </div>
+      <div class="field">
+        <label for="confirm">Confirm Password</label>
+        <input id="confirm" type="password" autocomplete="new-password" required />
+      </div>
+      <p id="auth-error" class="auth-error" role="alert"></p>
+      <p id="auth-success" class="auth-success" role="status"></p>
+      <button type="submit" class="btn-primary btn-full" id="submit-btn">Create Account</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="/login.html">Sign In</a></p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/supabase-init.js"></script>
+  <script src="/js/site-views.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/register-init.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+{
+    "version":  2,
+    "rewrites":  [
+                     {
+                         "source":  "/api/(.*)",
+                         "destination":  "/api/$1"
+                     }
+                 ],
+    "headers":  [
+                    {
+                        "source":  "/(.*)",
+                        "headers":  [
+                                        {
+                                            "key":  "Content-Security-Policy",
+                                            "value":  "default-src \u0027self\u0027; connect-src \u0027self\u0027 https://*.supabase.co wss: https://*.railway.app https://cdn.jsdelivr.net https://*.ipcamlive.com https://*.vercel-analytics.com https://vitals.vercel-insights.com; script-src \u0027self\u0027 \u0027unsafe-eval\u0027 https://cdn.jsdelivr.net blob: https://*.vercel-analytics.com; worker-src blob:; style-src \u0027self\u0027 https://cdn.jsdelivr.net https://fonts.googleapis.com \u0027unsafe-inline\u0027; font-src \u0027self\u0027 https://fonts.gstatic.com data:; img-src \u0027self\u0027 data: https://*.supabase.co; media-src \u0027self\u0027 blob:; frame-ancestors \u0027none\u0027"
+                                        },
+                                        {
+                                            "key":  "X-Frame-Options",
+                                            "value":  "DENY"
+                                        },
+                                        {
+                                            "key":  "X-Content-Type-Options",
+                                            "value":  "nosniff"
+                                        },
+                                        {
+                                            "key":  "Referrer-Policy",
+                                            "value":  "no-referrer"
+                                        },
+                                        {
+                                            "key":  "Permissions-Policy",
+                                            "value":  "camera=(), microphone=(), geolocation=()"
+                                        }
+                                    ]
+                    }
+                ],
+    "functions":  {
+                      "api/**/*.js":  {
+                                          "memory":  128,
+                                          "maxDuration":  10
+                                      }
+                  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" rx="10" fill="#050810"/>
+
+  <!-- Yellow HUD corner brackets — balanced inset -->
+  <g stroke="#00d4ff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top-left -->
+    <path d="M12 24V12H24"/>
+    <!-- Top-right -->
+    <path d="M40 12H52V24"/>
+    <!-- Bottom-left -->
+    <path d="M12 40V52H24"/>
+    <!-- Bottom-right -->
+    <path d="M40 52H52V40"/>
+  </g>
+</svg>
