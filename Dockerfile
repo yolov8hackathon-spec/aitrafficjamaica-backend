@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-# System deps for OpenCV and YOLO
+# System deps for OpenCV and YOLO (headless — no display needed on server)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
@@ -11,31 +11,32 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# 1. Pin numpy FIRST — a single version that every subsequent package resolves
-#    against. Eliminates the dual-numpy ABI issue (cv2 / torch / supervision
-#    each importing a different numpy module instance).
-#    numpy 1.26.4 satisfies: ultralytics>=1.23, supervision>=1.21, scipy>=1.23.5
+# 1. Pin numpy FIRST — prevents dual-numpy ABI issue across cv2/torch/supervision
 RUN pip install --no-cache-dir numpy==1.26.4
 
-# 2. CUDA-enabled PyTorch (cu121 — compatible with CUDA 12.x injected by Railway GPU)
-#    Falls back to CPU silently via detector.py if no GPU is attached.
+# 2. CPU-only PyTorch — Railway has no GPU on standard plans; saves ~2.3GB vs cu121
 RUN pip install --no-cache-dir \
-    torch==2.3.1+cu121 \
-    torchvision==0.18.1+cu121 \
-    --index-url https://download.pytorch.org/whl/cu121
+    torch==2.3.1+cpu \
+    torchvision==0.18.1+cpu \
+    --index-url https://download.pytorch.org/whl/cpu
 
 # 3. Remaining deps — all see numpy 1.26.4 already in site-packages
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-download YOLO weights so they're baked in — avoids download on every cold start
-# yolov8s.pt = YOLOv8 small model (21MB)
+# Pre-download yolov8s.pt weights — baked in to avoid cold-start download
 RUN python -c "from ultralytics import YOLO; YOLO('yolov8s.pt')"
 
-# Clean pip cache to reduce image size
-RUN pip cache purge
-
 COPY . .
+
+# Remove dev/test artifacts to keep image lean
+RUN rm -rf \
+    __pycache__ \
+    */__pycache__ \
+    testsprite_tests \
+    scripts \
+    .git \
+    public/node_modules
 
 EXPOSE 8000
 
