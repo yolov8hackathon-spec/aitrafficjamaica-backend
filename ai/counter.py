@@ -1067,6 +1067,11 @@ class LineCounter:
                 x1, y1, x2, y2 = detections.xyxy[i]
                 in_dz = (self._detect_poly is None) or (i < len(eligible) and eligible[i])
                 color = _sample_vehicle_color(frame, int(x1), int(y1), int(x2), int(y2))
+                tid = None
+                if detections.tracker_id is not None and i < len(detections.tracker_id):
+                    raw_tid = int(detections.tracker_id[i])
+                    if raw_tid >= 0:
+                        tid = raw_tid
                 boxes.append({
                     "x1": round(float(x1) / self.frame_width, 4),
                     "y1": round(float(y1) / self.frame_height, 4),
@@ -1075,6 +1080,7 @@ class LineCounter:
                     "cls": CLASS_NAMES[cls_id],
                     "conf": conf,
                     "color": color,
+                    "tracker_id": tid,
                     "in_detect_zone": in_dz,
                 })
 
